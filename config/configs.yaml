@@ -1,0 +1,67 @@
+# 路径配置
+paths:
+  raw_pdf_dir: "D:/Learn/machine_learning/LLM_Project/data/RAW"
+  ocr_pdf_dir: "D:/Learn/machine_learning/LLM_Project/data/OCR"
+  processed_dir: "D:/Learn/machine_learning/LLM_Project/src/evaluation" # PDF 解析结果缓存
+  vector_db_path: "D:/Learn/machine_learning/LLM_Project/vector"
+  output_dir: "D:/Learn/machine_learning/LLM_Project/outputs" # 输出结果目录
+
+# PDF文本切分配置
+pdf_splitting:
+  chunk_size: 800       # 文本块大小
+  chunk_overlap: 200     # 块间重叠
+
+# PDF文本加载配置 - Unstructured
+pdf_loading:
+  fast_loading:
+    # hi_res: 高精度 + layout+OCR
+    strategy: "fast"
+    # 指定 layout 模型
+    hi_res_model_name: "yolox"
+    # True: 将表格结构化为 html-like 结构，保留单元格层级
+    infer_table_structure: True
+    # by_title: 按标题分块
+    chunking_strategy: "by_title"
+    # 超过指定字符数后强制新块
+    max_characters: 1000
+    # 小块自动合并
+    combine_text_under_n_chars: 250
+    # 提取图片对象
+    extract_images_in_pdf: False
+    # 元素中添加分页标记-文档引用定位、页码追踪
+    include_page_breaks: True
+    # 每个元素自动检测语言类型
+    detect_language_per_element: True
+    # 选择语言
+    languages: [ "chi_sim", "eng" ]
+  hi_res_loading:
+    # hi_res: 高精度 + layout+OCR
+    strategy: "hi_res"
+    # 指定 layout 模型
+    hi_res_model_name: "yolox"
+    # True: 将表格结构化为 html-like 结构，保留单元格层级
+    infer_table_structure: True
+    # by_title: 按标题分块
+    chunking_strategy: "by_title"
+    # 超过指定字符数后强制新块
+    max_characters: 1500
+    # 小块自动合并
+    combine_text_under_n_chars: 500
+    # 提取图片对象
+    extract_images_in_pdf: False
+    # 元素中添加分页标记-文档引用定位、页码追踪
+    include_page_breaks: True
+    # 每个元素自动检测语言类型
+    detect_language_per_element: False
+    # 选择语言
+    languages: ["chi_sim", "eng"]
+
+# 检索配置
+retrieval:
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+  top_k: 3              # 检索返回的文档数
+
+# 大模型配置
+llm:
+  local_model_path: "Qwen/Qwen2.5-1.5B-Instruct"  # HuggingFace模型名或本地路径
+  device: "cuda"  # 或 "cuda"

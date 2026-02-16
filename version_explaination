@@ -1,0 +1,5 @@
+2026/2/16
+pdf识别空白未解决
+对比回答已实现
+chunk_size=800, chunk_overlap=200
+top_k=3

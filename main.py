@@ -2,6 +2,8 @@ import sys
 import os
 import json
 import yaml
+import importlib.util
+from glob import glob
 from datetime import datetime
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -59,10 +61,10 @@ class RAGSystem:
 
     def process_pdfs(self):
         """读取并处理PDF文件"""
-        if self.check_pdf_processed():
-            print("✅ PDF文件已处理，跳过此步骤")
-            print(f"   缓存位置: {self.config['paths']['processed_dir']}")
-            return
+        # if self.check_pdf_processed():
+        #     print("✅ PDF文件已处理，跳过此步骤")
+        #     print(f"   缓存位置: {self.config['paths']['processed_dir']}")
+        #     return
 
         print("\n" + "="*50)
         print("📖 开始读取和处理PDF文件")
@@ -240,8 +242,8 @@ class RAGSystem:
 
                 results.append({
                     "question": question,
-                    "rag_answer": rag_result['answer'],
-                    "non_rag_answer": non_rag_result['answer']
+                    "A": rag_result['answer'],
+                    "B": non_rag_result['answer']
                 })
 
                 # 显示对比
@@ -252,8 +254,8 @@ class RAGSystem:
                 print(f"❌ 错误: {str(e)}")
                 results.append({
                     "question": question,
-                    "rag_answer": f"错误: {str(e)}",
-                    "non_rag_answer": f"错误: {str(e)}"
+                    "A": f"错误: {str(e)}",
+                    "B": f"错误: {str(e)}"
                 })
 
         # 保存结果
@@ -347,6 +349,54 @@ class RAGSystem:
         except Exception as e:
             print(f"\n❌ 清空失败: {str(e)}")
 
+    def run_judge_evaluation(self):
+        """调用评委模型对A/B回答进行评分"""
+        print("\n" + "="*50)
+        print("⚖️  评委模型评分")
+        print("="*50 + "\n")
+
+        output_dir = self.config['paths'].get('output_dir', 'outputs')
+        eval_dir = os.path.join(output_dir, 'evaluation_results')
+        eval_py_path = os.path.join(eval_dir, 'eval.py')
+
+        if not os.path.exists(eval_py_path):
+            print(f"❌ 未找到评测脚本: {eval_py_path}")
+            return
+
+        default_input = os.path.join(eval_dir, 'result.json')
+        if not os.path.exists(default_input):
+            candidates = glob(os.path.join(eval_dir, "rag_vs_non_rag_*.json"))
+            if candidates:
+                candidates.sort(key=os.path.getmtime, reverse=True)
+                default_input = candidates[0]
+
+        input_file = input(f"请输入待评分JSON路径（回车默认: {default_input}）: ").strip() or default_input
+        if not os.path.exists(input_file):
+            print(f"❌ 输入文件不存在: {input_file}")
+            return
+
+        default_output = os.path.join(eval_dir, 'scoring.json')
+        output_file = input(f"请输入评分输出路径（回车默认: {default_output}）: ").strip() or default_output
+
+        try:
+            spec = importlib.util.spec_from_file_location("eval_module", eval_py_path)
+            if spec is None or spec.loader is None:
+                print("❌ 无法加载评测模块")
+                return
+            eval_module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(eval_module)
+
+            result = eval_module.evaluate_file(
+                input_json_path=input_file,
+                output_json_path=output_file,
+            )
+
+            print("\n✅ 评分完成")
+            print(f"📄 输出文件: {result['output_json_path']}")
+            print(f"📊 统计: {json.dumps(result['summary'], ensure_ascii=False)}")
+        except Exception as e:
+            print(f"\n❌ 评分失败: {str(e)}")
+
     def show_menu(self):
         """显示主菜单"""
         print("\n" + "="*50)
@@ -359,7 +409,8 @@ class RAGSystem:
         print("  [4] RAG与非RAG对比问答")
         print("  [5] 查看数据库统计")
         print("  [6] 清空向量数据库")
-        print("  [7] 退出系统")
+        print("  [7] 评委模型评分")
+        print("  [8] 退出系统")
         print("\n状态:")
         print(f"  📖 PDF已处理: {'✅' if self.check_pdf_processed() else '❌'}")
         print(f"  🗄️  知识库已构建: {'✅' if self.check_vector_db_built() else '❌'}")
@@ -370,7 +421,7 @@ class RAGSystem:
         while True:
             try:
                 self.show_menu()
-                choice = input("\n请输入选项 (1-7): ").strip()
+                choice = input("\n请输入选项 (1-8): ").strip()
 
                 if choice == '1':
                     self.process_pdfs()
@@ -385,10 +436,12 @@ class RAGSystem:
                 elif choice == '6':
                     self.clear_database()
                 elif choice == '7':
+                    self.run_judge_evaluation()
+                elif choice == '8':
                     print("\n👋 感谢使用，再见！")
                     break
                 else:
-                    print("\n❌ 无效选项，请输入1-7之间的数字")
+                    print("\n❌ 无效选项，请输入1-8之间的数字")
 
             except KeyboardInterrupt:
                 print("\n\n👋 程序已中断，再见！")

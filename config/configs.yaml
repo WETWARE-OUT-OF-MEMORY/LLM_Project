@@ -65,3 +65,7 @@ retrieval:
 llm:
   local_model_path: "Qwen/Qwen2.5-1.5B-Instruct"  # HuggingFace模型名或本地路径
   device: "cuda"  # 或 "cuda"
+  judge_online:
+    provider: "openai"
+    model: "qwen-plus"
+    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"

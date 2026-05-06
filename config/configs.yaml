@@ -5,6 +5,8 @@ paths:
   processed_dir: "D:/Learn/machine_learning/LLM_Project/src/evaluation" # PDF 解析结果缓存
   vector_db_path: "D:/Learn/machine_learning/LLM_Project/vector"
   output_dir: "D:/Learn/machine_learning/LLM_Project/outputs" # 输出结果目录
+  images_dir: "D:/Learn/machine_learning/LLM_Project/data/images"             #
+  vlm_cache: "D:/Learn/machine_learning/LLM_Project/data/cache/vlm_descriptions.json"  #
 
 # PDF文本切分配置
 pdf_splitting:
@@ -21,13 +23,14 @@ pdf_loading:
     # True: 将表格结构化为 html-like 结构，保留单元格层级
     infer_table_structure: True
     # by_title: 按标题分块
-    chunking_strategy: "by_title"
+    # chunking_strategy: "by_title"
     # 超过指定字符数后强制新块
-    max_characters: 1000
+    # max_characters: 1000
     # 小块自动合并
-    combine_text_under_n_chars: 250
+    # combine_text_under_n_chars: 250
     # 提取图片对象
-    extract_images_in_pdf: False
+    extract_images_in_pdf: True
+    extract_image_block_output_dir: "D:/Learn/machine_learning/LLM_Project/data/images"
     # 元素中添加分页标记-文档引用定位、页码追踪
     include_page_breaks: True
     # 每个元素自动检测语言类型
@@ -42,13 +45,14 @@ pdf_loading:
     # True: 将表格结构化为 html-like 结构，保留单元格层级
     infer_table_structure: True
     # by_title: 按标题分块
-    chunking_strategy: "by_title"
+    # chunking_strategy: "by_title"
     # 超过指定字符数后强制新块
-    max_characters: 1000
+    # max_characters: 1000
     # 小块自动合并
-    combine_text_under_n_chars: 250
+    # combine_text_under_n_chars: 250
     # 提取图片对象
-    extract_images_in_pdf: False
+    extract_images_in_pdf: True
+    extract_image_block_output_dir: "D:/Learn/machine_learning/LLM_Project/data/images"
     # 元素中添加分页标记-文档引用定位、页码追踪
     include_page_breaks: True
     # 每个元素自动检测语言类型
@@ -58,8 +62,11 @@ pdf_loading:
 
 # 检索配置
 retrieval:
-  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
-  top_k: 8           # 检索返回的文档数
+  embedding_model: "nomic-ai/nomic-embed-text-v1.5"
+  embedding_query_prefix: "search_query: "
+  embedding_doc_prefix: "search_document: "
+  trust_remote_code: true
+  top_k: 8
 
 # 大模型配置
 llm:
@@ -69,3 +76,9 @@ llm:
     provider: "openai"
     model: "qwen-plus"
     base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  vlm_online: # Image元素生成描述性正文
+    provider: "openai"
+    model: "qwen-vl-plus"
+    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    max_tokens: 500
+    temperature: 0.3

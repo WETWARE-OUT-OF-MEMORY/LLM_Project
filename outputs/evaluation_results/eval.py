@@ -574,7 +574,7 @@ def main() -> None:
         with open(config_path, "r", encoding="utf-8") as f:
             config = yaml.safe_load(f) or {}
 
-    default_output_dir = config['path']['output_dir']
+    default_output_dir = config['paths']['output_dir']
     default_input_json_path = os.path.join(default_output_dir, "evaluation_results", f"topk_{config['retrieval']['top_k']}", "result.json")
     default_output_path = os.path.join(default_output_dir, "evaluation_results", f"topk_{config['retrieval']['top_k']}", "scoring.json")
 

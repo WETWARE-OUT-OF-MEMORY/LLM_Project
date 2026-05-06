@@ -1,5 +1,5 @@
 """提示词模板"""
-from typing import Dict
+from typing import Dict, Optional
 
 
 def build_rag_prompt(question: str, context: str) -> str:
@@ -88,3 +88,18 @@ def build_judge_scoring_prompt(question: str, answer_a: str, answer_b: str) -> D
 {answer_b}
 """
     return {"instructions": instructions, "input": input_text}
+
+def build_image_description_prompt(section_title: Optional[str] = None, nearby_text: Optional[str] = None,)->str:
+    """构造图片描述 prompt（VLM 的 user 消息）。"""
+    parts = [
+        "请用一段简明的中文描述这张图片的关键内容。",
+        "要求：",
+        "- 100-200 字",
+        "- 突出图中的概念、流程、关系，便于知识检索",
+        "- 不要描述颜色、字体等无关样式",
+    ]
+    if section_title:
+        parts.append(f"\n图片所在章节：{section_title}")
+    if nearby_text:
+        parts.append(f"\n相邻文本：{nearby_text}")
+    return "\n".join(parts)

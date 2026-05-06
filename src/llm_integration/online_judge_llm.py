@@ -12,7 +12,7 @@ class OnlineJudgeLLM:
 
     def __init__(self, config_path: str = "D:\Learn\machine_learning\LLM_Project\config\configs.yaml"):
         with open(config_path, "r", encoding="utf-8") as f:
-            self.config = yaml.safe_load(f) or {}
+            self.config = yaml.safe_load(f)
 
         judge_config: Dict[str, Any] = self.config.get("llm", {}).get("judge_online", {})
         self.model = judge_config.get("model", "qwen-plus")

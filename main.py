@@ -2,6 +2,7 @@ import sys
 import os
 import json
 import yaml
+import random
 import importlib.util
 from glob import glob
 from datetime import datetime
@@ -86,6 +87,7 @@ class RAGSystem:
         processed_path = self.config['paths']['processed_dir']
         os.makedirs(processed_path, exist_ok=True)
 
+        # file: /data/RAW路径下的pdf文件路径
         for file in pdf_files:
             print(f"\n处理: {file}")
             pages = loader.load_and_extract(file)
@@ -547,6 +549,57 @@ class RAGSystem:
         except Exception as e:
             print(f"\n❌ 全部分析失败: {str(e)}")
 
+    def preview_random_chunk(self):
+        """随机展示一段已切分文本（非必选功能）"""
+        print("\n" + "="*50)
+        print("🎲 随机展示切分文本")
+        print("="*50 + "\n")
+
+        processed_dir = self.config['paths']['processed_dir']
+        if not os.path.exists(processed_dir):
+            print(f"❌ 处理目录不存在: {processed_dir}")
+            print("   请先执行 [1] 读取PDF文件")
+            return
+
+        json_files = [f for f in os.listdir(processed_dir) if f.endswith('.json')]
+        if not json_files:
+            print("❌ 未找到切分结果文件")
+            print("   请先执行 [1] 读取PDF文件")
+            return
+
+        all_chunks = []
+        for file in json_files:
+            file_path = os.path.join(processed_dir, file)
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                if isinstance(data, list):
+                    for item in data:
+                        if isinstance(item, dict) and (item.get('text') or '').strip():
+                            all_chunks.append(item)
+            except Exception as e:
+                print(f"⚠️  跳过文件 {file}: {e}")
+
+        if not all_chunks:
+            print("❌ 切分结果中没有可展示文本")
+            return
+
+        sample = random.choice(all_chunks)
+        text = (sample.get('text') or '').strip()
+        source_doc = sample.get('source_doc', 'unknown')
+        source_page = sample.get('source_page', 'unknown')
+        section_title = sample.get('section_title')
+
+        print("✅ 随机抽取成功")
+        print(f"📄 来源文档: {source_doc}")
+        print(f"📑 来源页码: {source_page}")
+        if section_title:
+            print(f"🧩 章节标题: {section_title}")
+        print(f"📏 文本长度: {len(text)}")
+        print("\n--- 文本内容开始 ---")
+        print(text)
+        print("--- 文本内容结束 ---")
+
     def show_menu(self):
         """显示主菜单"""
         print("\n" + "="*50)
@@ -562,6 +615,7 @@ class RAGSystem:
         print("  [7] 评委模型评分")
         print("  [8] 分析指定TopK结果")
         print("  [9] 分析全部TopK结果")
+        print("  [10] 随机展示一段切分文本")
         print("  [0] 退出系统")
         print("\n状态:")
         print(f"  📖 PDF已处理: {'✅' if self.check_pdf_processed() else '❌'}")
@@ -573,7 +627,7 @@ class RAGSystem:
         while True:
             try:
                 self.show_menu()
-                choice = input("\n请输入选项 (0-9): ").strip()
+                choice = input("\n请输入选项 (0-10): ").strip()
 
                 if choice == '1':
                     self.process_pdfs()
@@ -593,11 +647,13 @@ class RAGSystem:
                     self.analyze_specific_topk()
                 elif choice == '9':
                     self.analyze_all_topk()
+                elif choice == '10':
+                    self.preview_random_chunk()
                 elif choice == '0':
                     print("\n👋 感谢使用，再见！")
                     break
                 else:
-                    print("\n❌ 无效选项，请输入0-9之间的数字")
+                    print("\n❌ 无效选项，请输入0-10之间的数字")
 
             except KeyboardInterrupt:
                 print("\n\n👋 程序已中断，再见！")

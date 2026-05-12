@@ -18,7 +18,7 @@ class LocalLLM:
         self.tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
         self.model = AutoModelForCausalLM.from_pretrained(
             model_path,
-            torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+            dtype=torch.float16 if device == "cuda" else torch.float32,
             device_map="auto" if device == "cuda" else None,
             trust_remote_code=True
         )
@@ -29,7 +29,7 @@ class LocalLLM:
         self.device = device
         print(f"✅ 模型加载完成，使用设备: {device}")
 
-    def generate(self, prompt: str, max_length: int = 512, temperature: float = 0.7) -> str:
+    def generate(self, prompt: str, max_length: int = 512, temperature: float = 0.3) -> str:
         """生成回答"""
         inputs = self.tokenizer(prompt, return_tensors="pt")
         
@@ -43,7 +43,10 @@ class LocalLLM:
                 temperature=temperature,
                 do_sample=True,
                 top_p=0.9,
-                pad_token_id=self.tokenizer.eos_token_id
+                pad_token_id=self.tokenizer.eos_token_id,
+                repetition_penalty=2.0,
+                num_beams=3,
+                early_stopping=True,
             )
 
         response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)

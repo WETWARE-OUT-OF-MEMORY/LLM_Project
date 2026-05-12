@@ -52,8 +52,9 @@ class RAGSystem:
         
         # 检查关键数据文件是否存在
         required_files = [
-            os.path.join(vector_db_path, 'faiss_index.pkl'),
+            os.path.join(vector_db_path, 'prefixed_faiss_index.pkl'),
             os.path.join(vector_db_path, 'texts.json'),
+            os.path.join(vector_db_path, 'prefixed_texts.json'),
             os.path.join(vector_db_path, 'metadatas.json')
         ]
         
@@ -83,21 +84,22 @@ class RAGSystem:
             print(f"  {i}. {file}")
 
         loader = PDFLoader()
-        splitter = TextSplitter(self.config)
+        # splitter = TextSplitter(self.config)
         processed_path = self.config['paths']['processed_dir']
         os.makedirs(processed_path, exist_ok=True)
 
         # file: /data/RAW路径下的pdf文件路径
         for file in pdf_files:
             print(f"\n处理: {file}")
-            pages = loader.load_and_extract(file)
-            chunks = splitter.split_documents(pages)
+            # pages = loader.load_and_extract(file)
+            # chunks = splitter.split_documents(pages)
+            chunks = loader.extract_from_pdf(file)
 
             chunks_path = os.path.join(processed_path, f'{file.split(".")[0]}.json')
             with open(chunks_path, 'w', encoding='utf-8') as f:
                 json.dump(chunks, f, ensure_ascii=False, indent=2)
 
-            print(f"  ✅ 完成 - 页数: {len(pages)}, 文本块: {len(chunks)}")
+            print(f"  ✅ 完成 - 文本块: {len(chunks)}")
             print(f"  💾 保存至: {chunks_path}")
 
         print("\n✅ 所有PDF处理完成！")
@@ -183,7 +185,12 @@ class RAGSystem:
                     continue
 
                 print("\n🤖 正在思考...")
-                result = self.rag_core.answer_with_rag(question, self.config['retrieval']['top_k'])
+                result = self.rag_core.answer_with_rag(
+                    question,
+                    self.config['retrieval']['top_k'],
+                    self.config['retrieval']['top_m'],
+                    self.config['retrieval']['similarity_threshold']
+                )
                 
                 print(f"\n💡 回答:\n{result['answer']}")
                 print(f"\n📚 参考了 {len(result['retrieved_docs'])} 个文档片段")
@@ -234,7 +241,12 @@ class RAGSystem:
             try:
                 # RAG回答
                 print("🔄 RAG模式回答中...")
-                rag_result = self.rag_core.answer_with_rag(question, self.config['retrieval']['top_k'])
+                rag_result = self.rag_core.answer_with_rag(
+                    question,
+                    self.config['retrieval']['top_k'],
+                    self.config['retrieval']['top_m'],
+                    self.config['retrieval']['similarity_threshold']
+                )
                 print(f"✅ RAG回答完成")
 
                 # 非RAG回答

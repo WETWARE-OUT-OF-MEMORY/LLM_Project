@@ -1,0 +1,2211 @@
+{
+  "meta": {
+    "version": "v2-auto-strict",
+    "generated_from": "d:\\Learn\\machine_learning\\LLM_Project\\outputs\\evaluation_results\\scoring.json",
+    "total_questions": 90,
+    "notes": "reduced generic points, added aliases and must_have; manual review recommended"
+  },
+  "items": [
+    {
+      "index": 1,
+      "question": "什么是时间复杂度？如何区分 O(n) 和 O(n²)？",
+      "keypoints": [
+        {
+          "id": "Q1_KP1",
+          "text": "说明：什么是时间复杂度",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q1_KP2",
+          "text": "说明：如何区分 O(n) 和 O(n²)",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "question": "顺序表和链表在物理存储上的区别是什么？",
+      "keypoints": [
+        {
+          "id": "Q2_KP1",
+          "text": "给出定义：顺序表和链表在物理存储上的区别",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么",
+            "差异",
+            "不同点",
+            "对比"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q2_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "question": "栈的基本操作有哪些？其典型应用场景是什么？",
+      "keypoints": [
+        {
+          "id": "Q3_KP1",
+          "text": "列举：栈的基本操作",
+          "aliases": [
+            "罗列",
+            "构成项"
+          ],
+          "weight": 0.3939,
+          "must_have": true
+        },
+        {
+          "id": "Q3_KP2",
+          "text": "说明：各项的核心要点",
+          "aliases": [],
+          "weight": 0.2121,
+          "must_have": false
+        },
+        {
+          "id": "Q3_KP3",
+          "text": "给出定义：其典型应用场景",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么"
+          ],
+          "weight": 0.394,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "question": "什么是完全二叉树？",
+      "keypoints": [
+        {
+          "id": "Q4_KP1",
+          "text": "说明：什么是完全二叉树",
+          "aliases": [
+            "二叉树"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q4_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "二叉树"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "question": "什么是图的邻接矩阵表示法？",
+      "keypoints": [
+        {
+          "id": "Q5_KP1",
+          "text": "说明：什么是图的邻接矩阵表示法",
+          "aliases": [
+            "邻接矩阵"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q5_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "邻接矩阵"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "question": "冒泡排序的时间复杂度是多少？是否稳定？",
+      "keypoints": [
+        {
+          "id": "Q6_KP1",
+          "text": "说明：冒泡排序的时间复杂度是多少",
+          "aliases": [
+            "冒泡排序"
+          ],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q6_KP2",
+          "text": "说明：是否稳定",
+          "aliases": [
+            "冒泡排序"
+          ],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "question": "二分查找的前提条件是什么？",
+      "keypoints": [
+        {
+          "id": "Q7_KP1",
+          "text": "给出定义：二分查找的前提条件",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么",
+            "前提",
+            "约束",
+            "二分查找"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q7_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "二分查找"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "question": "什么是大根堆？",
+      "keypoints": [
+        {
+          "id": "Q8_KP1",
+          "text": "说明：什么是大根堆",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q8_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "question": "什么是哈希冲突？",
+      "keypoints": [
+        {
+          "id": "Q9_KP1",
+          "text": "说明：什么是哈希冲突",
+          "aliases": [
+            "哈希"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q9_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "哈希"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "question": "递归算法必须包含哪两个基本要素？",
+      "keypoints": [
+        {
+          "id": "Q10_KP1",
+          "text": "说明：递归算法必须包含哪两个基本要素",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q10_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "question": "什么是进程？什么是线程？",
+      "keypoints": [
+        {
+          "id": "Q11_KP1",
+          "text": "说明：什么是进程",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q11_KP2",
+          "text": "说明：什么是线程",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "question": "进程有哪些基本状态？",
+      "keypoints": [
+        {
+          "id": "Q12_KP1",
+          "text": "列举：进程基本状态",
+          "aliases": [
+            "罗列",
+            "构成项"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q12_KP2",
+          "text": "说明：各项的核心要点",
+          "aliases": [],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "question": "什么是时间片轮转调度？",
+      "keypoints": [
+        {
+          "id": "Q13_KP1",
+          "text": "说明：什么是时间片轮转调度",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q13_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "question": "什么是死锁？",
+      "keypoints": [
+        {
+          "id": "Q14_KP1",
+          "text": "说明：什么是死锁",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q14_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "question": "什么是分页机制？",
+      "keypoints": [
+        {
+          "id": "Q15_KP1",
+          "text": "说明：什么是分页机制",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q15_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "question": "什么是缺页中断？",
+      "keypoints": [
+        {
+          "id": "Q16_KP1",
+          "text": "说明：什么是缺页中断",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q16_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "question": "什么是索引分配方式？",
+      "keypoints": [
+        {
+          "id": "Q17_KP1",
+          "text": "说明：什么是索引分配方式",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q17_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "question": "什么是临界区？",
+      "keypoints": [
+        {
+          "id": "Q18_KP1",
+          "text": "说明：什么是临界区",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q18_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "question": "什么是信号量？",
+      "keypoints": [
+        {
+          "id": "Q19_KP1",
+          "text": "说明：什么是信号量",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q19_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "question": "什么是系统调用？",
+      "keypoints": [
+        {
+          "id": "Q20_KP1",
+          "text": "说明：什么是系统调用",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q20_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "question": "CPU由哪几部分组成？",
+      "keypoints": [
+        {
+          "id": "Q21_KP1",
+          "text": "说明：CPU由哪几部分组成",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q21_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "question": "什么是指令周期？",
+      "keypoints": [
+        {
+          "id": "Q22_KP1",
+          "text": "说明：什么是指令周期",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q22_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "question": "什么是Cache？",
+      "keypoints": [
+        {
+          "id": "Q23_KP1",
+          "text": "说明：什么是Cache",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q23_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "question": "什么是主存？",
+      "keypoints": [
+        {
+          "id": "Q24_KP1",
+          "text": "说明：什么是主存",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q24_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "question": "程序计数器的作用是什么？",
+      "keypoints": [
+        {
+          "id": "Q25_KP1",
+          "text": "给出定义：程序计数器的作用",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么",
+            "目的",
+            "意义",
+            "用途"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q25_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "question": "什么是程序查询方式？",
+      "keypoints": [
+        {
+          "id": "Q26_KP1",
+          "text": "说明：什么是程序查询方式",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q26_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "question": "什么是系统总线？",
+      "keypoints": [
+        {
+          "id": "Q27_KP1",
+          "text": "说明：什么是系统总线",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q27_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "question": "什么是直接映射Cache？",
+      "keypoints": [
+        {
+          "id": "Q28_KP1",
+          "text": "说明：什么是直接映射Cache",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q28_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "question": "补码表示的优点是什么？",
+      "keypoints": [
+        {
+          "id": "Q29_KP1",
+          "text": "给出定义：补码表示的优点",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q29_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "question": "什么是三地址指令？",
+      "keypoints": [
+        {
+          "id": "Q30_KP1",
+          "text": "说明：什么是三地址指令",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q30_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "question": "OSI模型有哪七层？",
+      "keypoints": [
+        {
+          "id": "Q31_KP1",
+          "text": "说明：OSI模型有哪七层",
+          "aliases": [
+            "OSI"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q31_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "OSI"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "question": "TCP是面向连接的吗？",
+      "keypoints": [
+        {
+          "id": "Q32_KP1",
+          "text": "说明：TCP是面向连接的吗",
+          "aliases": [
+            "TCP"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q32_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "TCP"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "question": "IP地址的作用是什么？",
+      "keypoints": [
+        {
+          "id": "Q33_KP1",
+          "text": "给出定义：IP地址的作用",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么",
+            "目的",
+            "意义",
+            "用途"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q33_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "question": "什么是MAC地址？",
+      "keypoints": [
+        {
+          "id": "Q34_KP1",
+          "text": "说明：什么是MAC地址",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q34_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "question": "什么是HTTP协议？",
+      "keypoints": [
+        {
+          "id": "Q35_KP1",
+          "text": "说明：什么是HTTP协议",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q35_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "question": "什么是CRC？",
+      "keypoints": [
+        {
+          "id": "Q36_KP1",
+          "text": "说明：什么是CRC",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q36_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "question": "什么是滑动窗口？",
+      "keypoints": [
+        {
+          "id": "Q37_KP1",
+          "text": "说明：什么是滑动窗口",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q37_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 38,
+      "question": "慢启动算法的作用是什么？",
+      "keypoints": [
+        {
+          "id": "Q38_KP1",
+          "text": "给出定义：慢启动算法的作用",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么",
+            "目的",
+            "意义",
+            "用途"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q38_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "question": "什么是RIP协议？",
+      "keypoints": [
+        {
+          "id": "Q39_KP1",
+          "text": "说明：什么是RIP协议",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q39_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 40,
+      "question": "DNS的作用是什么？",
+      "keypoints": [
+        {
+          "id": "Q40_KP1",
+          "text": "给出定义：DNS的作用",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么",
+            "目的",
+            "意义",
+            "用途",
+            "DNS"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q40_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "DNS"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "question": "为什么快速排序平均时间复杂度为 O(n log n)？",
+      "keypoints": [
+        {
+          "id": "Q41_KP1",
+          "text": "解释原因：快速排序平均时间复杂度为 O(n log n)",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q41_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 42,
+      "question": "归并排序与快速排序在稳定性和空间复杂度上有什么差异？",
+      "keypoints": [
+        {
+          "id": "Q42_KP1",
+          "text": "说明：归并排序与快速排序在稳定性和空间复杂度上有什么差异",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q42_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "question": "AVL树如何保持平衡？",
+      "keypoints": [
+        {
+          "id": "Q43_KP1",
+          "text": "说明：如何AVL树保持平衡",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q43_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 44,
+      "question": "为什么B+树适合数据库索引？",
+      "keypoints": [
+        {
+          "id": "Q44_KP1",
+          "text": "解释原因：B+树适合数据库索引",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q44_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 45,
+      "question": "Dijkstra算法与Floyd算法的适用场景区别是什么？",
+      "keypoints": [
+        {
+          "id": "Q45_KP1",
+          "text": "给出定义：Dijkstra算法与Floyd算法的适用场景区别",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么",
+            "差异",
+            "不同点",
+            "对比"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q45_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 46,
+      "question": "信号量如何实现进程互斥？",
+      "keypoints": [
+        {
+          "id": "Q46_KP1",
+          "text": "说明：如何信号量实现进程互斥",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q46_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 47,
+      "question": "优先级调度可能带来什么问题？如何解决？",
+      "keypoints": [
+        {
+          "id": "Q47_KP1",
+          "text": "说明：优先级调度可能带来什么问题",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q47_KP2",
+          "text": "说明：如何解决",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 48,
+      "question": "为什么需要多级页表？",
+      "keypoints": [
+        {
+          "id": "Q48_KP1",
+          "text": "解释原因：需要多级页表",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q48_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 49,
+      "question": "LRU和FIFO算法在缺页率上有什么区别？",
+      "keypoints": [
+        {
+          "id": "Q49_KP1",
+          "text": "说明：LRU和FIFO算法在缺页率上有什么区别",
+          "aliases": [
+            "差异",
+            "不同点",
+            "对比"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q49_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 50,
+      "question": "共享内存与管道通信的差异是什么？",
+      "keypoints": [
+        {
+          "id": "Q50_KP1",
+          "text": "给出定义：共享内存与管道通信的差异",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q50_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 51,
+      "question": "为什么会出现Cache命中率这一指标？",
+      "keypoints": [
+        {
+          "id": "Q51_KP1",
+          "text": "解释原因：会出现Cache命中率这一指标",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q51_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 52,
+      "question": "流水线技术如何提高CPU吞吐率？",
+      "keypoints": [
+        {
+          "id": "Q52_KP1",
+          "text": "说明：如何流水线技术提高CPU吞吐率",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q52_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 53,
+      "question": "什么是数据冒险？举例说明。",
+      "keypoints": [
+        {
+          "id": "Q53_KP1",
+          "text": "说明：什么是数据冒险",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q53_KP2",
+          "text": "说明：举例说明",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 54,
+      "question": "中断处理过程包括哪些步骤？",
+      "keypoints": [
+        {
+          "id": "Q54_KP1",
+          "text": "说明：中断处理过程包括哪些步骤",
+          "aliases": [
+            "流程",
+            "过程",
+            "阶段"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q54_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 55,
+      "question": "虚拟地址到物理地址的转换过程是怎样的？",
+      "keypoints": [
+        {
+          "id": "Q55_KP1",
+          "text": "说明：虚拟地址到物理地址的转换过程是怎样的",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q55_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 56,
+      "question": "TCP三次握手的作用是什么？",
+      "keypoints": [
+        {
+          "id": "Q56_KP1",
+          "text": "给出定义：TCP三次握手的作用",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么",
+            "目的",
+            "意义",
+            "用途",
+            "TCP"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q56_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "TCP"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 57,
+      "question": "TCP拥塞控制包括哪几个阶段？",
+      "keypoints": [
+        {
+          "id": "Q57_KP1",
+          "text": "列举：TCP拥塞控制阶段",
+          "aliases": [
+            "罗列",
+            "构成项",
+            "TCP",
+            "拥塞控制"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q57_KP2",
+          "text": "说明：各项的核心要点",
+          "aliases": [
+            "TCP",
+            "拥塞控制"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 58,
+      "question": "分组交换相比电路交换有什么优势？",
+      "keypoints": [
+        {
+          "id": "Q58_KP1",
+          "text": "说明：分组交换相比电路交换有什么优势",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q58_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 59,
+      "question": "什么是停止等待协议？",
+      "keypoints": [
+        {
+          "id": "Q59_KP1",
+          "text": "说明：什么是停止等待协议",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q59_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 60,
+      "question": "HTTPS在HTTP基础上增加了什么机制？",
+      "keypoints": [
+        {
+          "id": "Q60_KP1",
+          "text": "说明：HTTPS在HTTP基础上增加了什么机制",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q60_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 61,
+      "question": "为什么进程切换会导致Cache失效？",
+      "keypoints": [
+        {
+          "id": "Q61_KP1",
+          "text": "解释原因：进程切换会导致Cache失效",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q61_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 62,
+      "question": "当浏览器访问网页时，操作系统参与了哪些过程？",
+      "keypoints": [
+        {
+          "id": "Q62_KP1",
+          "text": "说明：当浏览器访问网页时，操作系统参与了哪些过程",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q62_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 63,
+      "question": "为什么操作系统调度队列通常用链表实现？",
+      "keypoints": [
+        {
+          "id": "Q63_KP1",
+          "text": "解释原因：操作系统调度队列通常用链表实现",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q63_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 64,
+      "question": "网卡在OSI模型中处于哪几层？涉及哪些硬件机制？",
+      "keypoints": [
+        {
+          "id": "Q64_KP1",
+          "text": "说明：网卡在OSI模型中处于哪几层",
+          "aliases": [
+            "OSI"
+          ],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q64_KP2",
+          "text": "说明：涉及哪些硬件机制",
+          "aliases": [
+            "OSI"
+          ],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 65,
+      "question": "多线程环境下快速排序可能遇到什么问题？",
+      "keypoints": [
+        {
+          "id": "Q65_KP1",
+          "text": "说明：多线程环境下快速排序可能遇到什么问题",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q65_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 66,
+      "question": "多级页表和TLB如何协同工作以降低地址转换开销？",
+      "keypoints": [
+        {
+          "id": "Q66_KP1",
+          "text": "说明：如何多级页表和TLB协同工作以降低地址转换开销",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q66_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 67,
+      "question": "为什么B+树比红黑树更适合磁盘存储环境？",
+      "keypoints": [
+        {
+          "id": "Q67_KP1",
+          "text": "解释原因：B+树比红黑树更适合磁盘存储环境",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q67_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 68,
+      "question": "TCP的滑动窗口机制如何与操作系统缓冲区管理协同工作？",
+      "keypoints": [
+        {
+          "id": "Q68_KP1",
+          "text": "说明：如何TCP的滑动窗口机制与操作系统缓冲区管理协同工作",
+          "aliases": [
+            "TCP"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q68_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "TCP"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 69,
+      "question": "分支预测失败会导致哪些流水线阶段被清空？对性能有何影响？",
+      "keypoints": [
+        {
+          "id": "Q69_KP1",
+          "text": "说明：分支预测失败会导致哪些流水线阶段被清空",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q69_KP2",
+          "text": "说明：对性能有何影响",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 70,
+      "question": "页替换算法如何影响CPU缓存局部性？",
+      "keypoints": [
+        {
+          "id": "Q70_KP1",
+          "text": "说明：如何页替换算法影响CPU缓存局部性",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q70_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 71,
+      "question": "TCP拥塞控制如何与路由器队列长度变化相互影响？",
+      "keypoints": [
+        {
+          "id": "Q71_KP1",
+          "text": "说明：如何TCP拥塞控制与路由器队列长度变化相互影响",
+          "aliases": [
+            "TCP",
+            "拥塞控制"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q71_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "TCP",
+            "拥塞控制"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 72,
+      "question": "在多线程环境下如何保证哈希表的线程安全？",
+      "keypoints": [
+        {
+          "id": "Q72_KP1",
+          "text": "说明：如何在多线程环境下保证哈希表的线程安全",
+          "aliases": [
+            "哈希"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q72_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "哈希"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 73,
+      "question": "银行家算法如何判断系统是否处于安全状态？",
+      "keypoints": [
+        {
+          "id": "Q73_KP1",
+          "text": "说明：如何银行家算法判断系统是否处于安全状态",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q73_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 74,
+      "question": "DMA方式如何减少CPU负担？涉及哪些硬件模块？",
+      "keypoints": [
+        {
+          "id": "Q74_KP1",
+          "text": "说明：如何DMA方式减少CPU负担",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q74_KP2",
+          "text": "说明：涉及哪些硬件模块",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 75,
+      "question": "ARP欺骗攻击的原理是什么？如何防御？",
+      "keypoints": [
+        {
+          "id": "Q75_KP1",
+          "text": "给出定义：ARP欺骗攻击的原理",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么",
+            "机制",
+            "工作机制",
+            "基本思想"
+          ],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q75_KP2",
+          "text": "说明：如何防御",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 76,
+      "question": "文件系统缓存与页缓存有什么关系？",
+      "keypoints": [
+        {
+          "id": "Q76_KP1",
+          "text": "说明：文件系统缓存与页缓存有什么关系",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q76_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 77,
+      "question": "最短路径算法在路由协议中如何应用？",
+      "keypoints": [
+        {
+          "id": "Q77_KP1",
+          "text": "说明：如何最短路径算法在路由协议中应用",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q77_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 78,
+      "question": "MESI协议解决了什么问题？",
+      "keypoints": [
+        {
+          "id": "Q78_KP1",
+          "text": "说明：MESI协议解决了什么问题",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q78_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 79,
+      "question": "实时操作系统与普通操作系统调度策略有何不同？",
+      "keypoints": [
+        {
+          "id": "Q79_KP1",
+          "text": "说明：实时操作系统与普通操作系统调度策略有何不同",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q79_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 80,
+      "question": "NAT如何影响TCP连接建立？",
+      "keypoints": [
+        {
+          "id": "Q80_KP1",
+          "text": "说明：如何NAT影响TCP连接建立",
+          "aliases": [
+            "TCP",
+            "NAT"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q80_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "TCP",
+            "NAT"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 81,
+      "question": "如何将递归算法改写为非递归形式？涉及哪些数据结构？",
+      "keypoints": [
+        {
+          "id": "Q81_KP1",
+          "text": "说明：如何将递归算法改写为非递归形式",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q81_KP2",
+          "text": "说明：涉及哪些数据结构",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 82,
+      "question": "虚拟化技术如何实现多操作系统共享硬件资源？",
+      "keypoints": [
+        {
+          "id": "Q82_KP1",
+          "text": "说明：如何虚拟化技术实现多操作系统共享硬件资源",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q82_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 83,
+      "question": "超标量处理器如何实现指令级并行？",
+      "keypoints": [
+        {
+          "id": "Q83_KP1",
+          "text": "说明：如何超标量处理器实现指令级并行",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q83_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 84,
+      "question": "TCP流量控制与拥塞控制的区别和联系是什么？",
+      "keypoints": [
+        {
+          "id": "Q84_KP1",
+          "text": "说明区别：TCP流量控制与拥塞控制的",
+          "aliases": [
+            "差异",
+            "不同点",
+            "对比",
+            "TCP",
+            "拥塞控制",
+            "流量控制"
+          ],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q84_KP2",
+          "text": "说明联系：TCP流量控制与拥塞控制的",
+          "aliases": [
+            "关系",
+            "关联",
+            "TCP",
+            "拥塞控制",
+            "流量控制"
+          ],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 85,
+      "question": "布隆过滤器的原理是什么？误判率如何计算？",
+      "keypoints": [
+        {
+          "id": "Q85_KP1",
+          "text": "给出定义：布隆过滤器的原理",
+          "aliases": [
+            "概念",
+            "含义",
+            "是什么",
+            "机制",
+            "工作机制",
+            "基本思想",
+            "布隆过滤器"
+          ],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q85_KP2",
+          "text": "说明：如何误判率计算",
+          "aliases": [
+            "布隆过滤器"
+          ],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 86,
+      "question": "内部碎片和外部碎片的区别及解决方法？",
+      "keypoints": [
+        {
+          "id": "Q86_KP1",
+          "text": "说明区别：内部碎片和外部碎片的",
+          "aliases": [
+            "差异",
+            "不同点",
+            "对比"
+          ],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q86_KP2",
+          "text": "说明：内部碎片和外部碎片的的解决方法",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    },
+    {
+      "index": 87,
+      "question": "一次磁盘中断会经历哪些硬件和操作系统流程？",
+      "keypoints": [
+        {
+          "id": "Q87_KP1",
+          "text": "说明：一次磁盘中断会经历哪些硬件和操作系统流程",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q87_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 88,
+      "question": "TCP/IP模型与OSI模型在实际实现中有何差异？",
+      "keypoints": [
+        {
+          "id": "Q88_KP1",
+          "text": "说明：TCP/IP模型与OSI模型在实际实现中有何差异",
+          "aliases": [
+            "TCP",
+            "OSI",
+            "TCP/IP"
+          ],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q88_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束",
+            "TCP",
+            "OSI",
+            "TCP/IP"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 89,
+      "question": "外部排序为何采用归并策略？",
+      "keypoints": [
+        {
+          "id": "Q89_KP1",
+          "text": "说明：外部排序为何采用归并策略",
+          "aliases": [],
+          "weight": 0.65,
+          "must_have": true
+        },
+        {
+          "id": "Q89_KP2",
+          "text": "说明：关键机制或约束条件",
+          "aliases": [
+            "前提",
+            "约束"
+          ],
+          "weight": 0.35,
+          "must_have": false
+        }
+      ]
+    },
+    {
+      "index": 90,
+      "question": "在高并发Web服务器中，CPU、内存、网络和磁盘可能形成哪些瓶颈？分别如何优化？",
+      "keypoints": [
+        {
+          "id": "Q90_KP1",
+          "text": "说明：在高并发Web服务器中，CPU、内存、网络和磁盘可能形成哪些瓶颈",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        },
+        {
+          "id": "Q90_KP2",
+          "text": "说明：如何分别优化",
+          "aliases": [],
+          "weight": 0.5,
+          "must_have": true
+        }
+      ]
+    }
+  ]
+}

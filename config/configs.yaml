@@ -10,8 +10,8 @@ paths:
 
 # PDF文本切分配置
 pdf_splitting:
-  chunk_size: 800       # 文本块大小
-  chunk_overlap: 200     # 块间重叠
+  chunk_size: 512       # 文本块大小
+  chunk_overlap: 128     # 块间重叠
 
 # PDF文本加载配置 - Unstructured
 pdf_loading:
@@ -66,11 +66,19 @@ retrieval:
   embedding_query_prefix: "search_query: "
   embedding_doc_prefix: "search_document: "
   trust_remote_code: true
+  # 向量相似度阈值
+  similarity_threshold: 0.7
+  # top_m: 首轮粗召回
+  top_m: 20
+  # top_k: 二轮细召回
   top_k: 8
+
 
 # 大模型配置
 llm:
   local_model_path: "Qwen/Qwen2.5-1.5B-Instruct"  # HuggingFace模型名或本地路径
+  max_tokens: 500
+  temperature: 0.3
   device: "cuda"  # 或 "cuda"
   judge_online:
     provider: "openai"
@@ -82,3 +90,8 @@ llm:
     base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
     max_tokens: 500
     temperature: 0.3
+  rewrite_online:
+    provider: "openai"
+    model: "qwen-plus"
+    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    temperature: 0.2

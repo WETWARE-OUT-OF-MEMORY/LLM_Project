@@ -9,9 +9,10 @@ from typing import Dict, List, Optional, Set, Tuple
 import yaml
 from google.protobuf.internal.wire_format import INT32_MAX
 from pypdf import PdfReader, PdfWriter
-from unstructured.documents.elements import NarrativeText
+from unstructured.documents.elements import NarrativeText, Element
 from unstructured.partition.pdf import partition_pdf
 from unstructured.staging.base import elements_to_json
+from dataclasses import replace
 
 from src.pdf_processor.chunk import Chunk
 from src.pdf_processor.image_describer import ImageDescriber
@@ -85,24 +86,49 @@ class PDFLoader:
             return INT32_MAX
         return -1
 
-    def can_combine(self, prev, cur) -> bool:
+    def can_combine(self, prev:Chunk, cur:Element) -> bool:
         # 判断prev和cur能否合并
         # 长度限制
-        meta1 = len(prev.text) + len(cur.text) <= 1000
+        if prev.text is None or cur.text is None:
+            return False
+        # meta1 = len(prev.text) + len(cur.text) <= 1000
         # 双标题限制: 不都是标题 或者 cur标题比prev标题更深
-        meta2 = ((prev.category != 'Title' or cur.category != 'Title')
-                 or prev.last_title_level < self.get_title_level(cur.text))
+        meta2 = (prev.category != 'Title' or cur.category != 'Title') \
+                 or prev.last_title_level < self.get_title_level(cur.text)
         # 排除正文+标题
         meta3 = not (prev.category == 'NarrativeText' and cur.category == 'Title')
         # SOLO_FIELDS不参与合并
         meta4 = prev.category not in self.SOLO_FIELDS and cur.category not in self.SOLO_FIELDS
-        return meta1 and meta2 and meta3 and meta4
+        # return meta1 and meta2 and meta3 and meta4
+        return meta2 and meta3 and meta4
 
     def _make_chunk(self, el, title_stack: list) -> Chunk:
         # 从 unstructured Element + 当前 title_stack 构造一个新 Chunk
+
+        # el为标题时更新标题栈
+        if el.category == 'Title':
+            level = self.get_title_level(el.text)
+            while len(title_stack) > 0 and title_stack[-1][0] >= level:
+                title_stack.pop()
+            title_stack.append((level, el.text.strip()))
+
+        if el.category == 'Image':
+            # VLM生成图片的描述性文本
+            _image_path = getattr(el.metadata, 'image_path', None)
+            _section_title = title_stack[-1][1] if len(title_stack) > 0 else None
+            # 暂时不设计near_by_text
+            _near_by_text = None
+            caption = self.image_describer.describe(_image_path, _section_title, _near_by_text, False)
+            el.text = caption or ''
+
         _section_title = title_stack[-1][1] if title_stack else None
         _breadcrumb = " > ".join(t[1] for t in title_stack[:-1]) if len(title_stack) > 1 else None
-        _text_as_html = el.text_as_html if el.category == 'Table' else None
+        # _text_as_html = el.text_as_html if el.category == 'Table' else None
+        # el与metadata为text_as_html兜底
+        if el.category == 'Table':
+            _text_as_html = getattr(el, 'text_as_html', None) or getattr(el.metadata, 'text_as_html', None)
+        else:
+            _text_as_html = None
         return Chunk(
             text=el.text or '',
             category=el.category,
@@ -113,10 +139,49 @@ class PDFLoader:
             image_path=getattr(el.metadata, 'image_path', None),
         )
 
-    def combine_chunks(self, element_list:list)->list:
+    def text_chunk_split(self, chunk:Chunk)->List[Chunk]:
+        chunk_size = self.config.get('pdf_splitting',{}).get('chunk_size',1000)
+        chunk_overlap = self.config.get('pdf_splitting',{}).get('chunk_overlap',200)
+        separators = ["\n\n", "\n", "。", "；", "，", " ", ""]
+        piece_list = []
+        chunk_list = []
+
+        raw_text = chunk.text
+        start = 0
+        raw_text_len = len(raw_text)
+        while start < raw_text_len:
+            end = min(start + chunk_size, raw_text_len)
+            window = raw_text[start:end]
+            # 尝试在 window 内从后往前找一个合适的分隔符，尽量在语义边界处断开
+            split_pos = -1
+            for sep in separators[:-1]:  # 最后一个 "" 不参与查找
+                idx = window.rfind(sep)
+                # 保证分隔点不要离 start 太近，避免产生极短片段
+                if idx != -1 and idx > chunk_size * 0.3:
+                    split_pos = start + idx + len(sep)
+                    break
+            if split_pos == -1:
+                # 没找到合适分隔符，就在 chunk_size 处硬切
+                split_pos = end
+            sub_str = raw_text[start:split_pos].strip()
+            if sub_str:
+                piece_list.append(sub_str)
+
+            # 计算下一个窗口的起点，保留一定重叠
+            if split_pos >= raw_text_len:
+                break
+            start = max(split_pos - chunk_overlap, 0)
+
+        for piece in piece_list:
+            chunk_list.append(replace(chunk,text=piece))
+
+        return chunk_list
+
+    def combine_chunks(self, element_list:list[Element])->list:
 
         # VLM缓存最大落盘间隔
         CACHE_UPDATE_INTERVAL = 20
+
         all_chunks = []
         title_stack = []
         nxt_item = None
@@ -141,27 +206,21 @@ class PDFLoader:
 
         cnt = 0
         for el in element_list:
-            # el为标题时更新标题栈
-            if el.category == 'Title':
-                level = self.get_title_level(el.text)
-                while len(title_stack) > 0 and title_stack[-1][0] >= level:
-                    title_stack.pop()
-                title_stack.append((level, el.text.strip()))
+            # 空白表格静默跳过
+            if el.category == 'Table' and \
+                    (el.text is None or el.text == '') and \
+                    (el.text_as_html is None or el.text_as_html == '') and \
+                    (el.metadata.text_as_html is None or el.metadata.text_as_html == ''):
+                continue
 
             if el.category == 'Image':
-                # VLM生成图片的描述性文本
-                _image_path = getattr(el.metadata, 'image_path', None)
-                _section_title = title_stack[-1][1] if len(title_stack) > 0 else None
-                # 暂时不设计near_by_text
-                _near_by_text = None
-                caption = self.image_describer.describe(_image_path,_section_title,_near_by_text,False)
-                el.text = caption or ''
                 cnt += 1
                 cnt %= CACHE_UPDATE_INTERVAL
                 if cnt == 0:
                     self.image_describer.flush()
 
             if nxt_item is None:
+                # nxt_item->Chunk : nxt_item.item
                 # 第一个element成chunk
                 nxt_item = self._make_chunk(el, title_stack)
                 continue
@@ -189,8 +248,17 @@ class PDFLoader:
             all_chunks.append(nxt_item)
         self.image_describer.flush()
 
+        # 对过长纯文本类Chunk按照max_chunk、chunk_overlap进行进一步切分
+        splitted_chunks = []
+        for chunk in all_chunks:
+            if chunk.category in self.TEXT_FIELDS:
+                chunks = self.text_chunk_split(chunk)
+                for c in chunks:
+                    splitted_chunks.append(c)
+            splitted_chunks.append(chunk)
+
         # 转为dict格式，允许JSON序列化
-        all_chunks = [c.to_public_dict() for c in all_chunks]
+        all_chunks = [c.to_public_dict() for c in splitted_chunks]
 
         return all_chunks
 
@@ -224,40 +292,13 @@ class PDFLoader:
 
 if __name__ == "__main__":
     loader = PDFLoader()
-    pdf_name = '2025王道操作系统.pdf'
-    specified_pages = [11, 12, 13]              # 1-based 页码列表
-    print("=" * 80)
-    print(f"📄 PDF: {pdf_name}")
-    print(f"📑 目标页码: {specified_pages}")
-    print("=" * 80)
-    # 1) 解析指定页 → 原始 element 列表
-    element_list = loader.extract_from_page_list(pdf_name, pages=specified_pages)
-    print(f"\n[Stage 1] partition_pdf 解析出 {len(element_list)} 个原始元素")
-    # 1.1) 原始元素简报（可选：看 unstructured 切了哪些块）
-    # print("\n--- 原始元素列表 ---")
-    # for i, el in enumerate(element_list, 1):
-    #     text_preview = (el.text or "").strip().replace("\n", " ")
-    #     if len(text_preview) > 60:
-    #         text_preview = text_preview[:60] + "..."
-    #     print(f"  [{i:>3}] {el.category:<14} | {text_preview}")
-    # 2) 合并 → chunks
-    chunks = loader.combine_chunks(element_list)
-    print(f"\n[Stage 2] combine_chunks 合并后 {len(chunks)} 个 chunks")
-    # 3) 展示每个 chunk
-    print("\n" + "=" * 80)
-    print("                          切分结果展示")
-    print("=" * 80)
-    for i, chunk in enumerate(chunks, 1):
-        print(f"\n┌─ Chunk {i}/{len(chunks)} " + "─" * 60)
-        print(f"│ 类型     : {chunk.get('category')}")
-        print(f"│ 章节标题 : {chunk.get('section_title')}")
-        print(f"│ 面包屑   : {chunk.get('breadcrumb')}")
-        print(f"│ 来源文档 : {chunk.get('source_doc')}")
-        print(f"│ 文本长度 : {len(chunk.get('text', ''))}")
-        print("├─ 文本内容 " + "─" * 64)
-        # 给每行加一个左竖线，方便和外面区分
-        body = chunk.get('text', '')
-        for line in body.splitlines() or [body]:
-            print(f"│ {line}")
-        print("└" + "─" * 75)
-    print(f"\n✅ 共展示 {len(chunks)} 个 chunks")
+    pdf_list = ['2025王道操作系统.pdf','2025王道数据结构.pdf','2025王道计算机组成原理.pdf','2025王道计算机网络.pdf']
+    for pdf_name in pdf_list:
+        chunks = loader.extract_from_pdf(pdf_name)
+        min_text_size = INT32_MAX
+        max_text_size = -1
+        for chunk in chunks:
+            if chunk['category'] in loader.TEXT_FIELDS:
+                min_text_size = min(min_text_size, len(chunk['text']))
+                max_text_size = max(max_text_size, len(chunk['text']))
+        print(min_text_size, max_text_size)

@@ -1,65 +1,35 @@
-your_rag_project/                 # 项目根目录
+## 项目结构
+
+LLM_Project/                          # 项目根目录
+├── main.py                           # 命令行入口（RAG / 评测流程）
+├── requirements.txt
+├── version_explaination.txt
+├── README.md
 │
-├── data/                        # 数据目录
-│   ├── raw_pdfs/               # 存放原始PDF文件（如408教材）
-│   └── processed/              # 存放处理后的文本、向量数据库等（.gitignore忽略）
+├── config/                           # 配置文件（注意：目录名为 config，非 configs）
+│   └── configs.yaml                  # 模型、路径、API、检索等参数
 │
-├── src/                        # 源代码目录（核心）
-│   ├── __init__.py
-│   ├── pdf_processor/          # 模块①：PDF处理子项目
-│   │   ├── __init__.py
-│   │   ├── pdf_loader.py       # PDF读取与文本提取
-│   │   ├── text_splitter.py    # 文本分块策略
-│   │   └── utils.py            # 相关工具函数
+├── src/
+│   ├── pdf_processor/                # PDF 与分块
+│   │   ├── pdf_loader.py             # PDF 解析与文本提取
+│   │   ├── text_splitter.py          # 文本切分
+│   │   ├── chunk.py                # 分块数据结构 / 工具
+│   │   └── image_describer.py       # 图片理解（VLM 描述，配合图文检索）
 │   │
-│   ├── retriever/              # 模块②&④：检索与RAG核心
-│   │   ├── __init__.py
-│   │   ├── vector_store.py     # 向量数据库构建与检索
-│   │   └── rag_core.py         # RAG链的组装
+│   ├── retriever/                    # 向量库与 RAG
+│   │   ├── vector_store.py          # 向量构建与相似度检索
+│   │   └── rag_core.py              # RAG 组装（可选查询改写、Top-K 等）
 │   │
-│   ├── llm_integration/        # 与大模型交互
-│   │   ├── __init__.py
-│   │   ├── local_llm.py        # 本地模型调用（如Qwen）
-│   │   └── prompt_templates.py # 定义各种提示词模板
+│   ├── llm_integration/              # 大模型与提示词
+│   │   ├── local_llm.py             # 本地推理模型（Qwen2.5-1.5B）
+│   │   ├── online_rewrite_llm.py    # 在线查询改写（Qwen-plus）
+│   │   ├── online_judge_llm.py      # 在线评判 / 打分（Qwen-plus）
+│   │   ├── online_vlm.py            # 在线视觉语言模型（Qwen-vl-plus）
+│   │   └── prompt_templates.py      # 各类 prompt 构建
 │   │
-│   └── evaluation/             # 模块⑦：评测（关键！）
-│       ├── __init__.py
-│       ├── benchmark.py        # 构建评测集
-│       └── metrics.py          # 计算检索/生成指标
+│   └── utils/
+│       └── chunk_renderer.py        # 分块渲染等辅助
 │
-├── configs/                    # 配置文件目录
-│   └── config.yaml             # 或 config.py，集中管理路径、模型参数等
-│
-├── outputs/                    # 运行结果输出（.gitignore忽略）
-│   ├── evaluation_results/     # 评测结果与报告
-│   └── responses/              # 模型回答样例
-│
-├── tests/                      # 单元测试（可选但推荐）
-│   ├── __init__.py
-│   └── test_pdf_processor.py
-│
-├── requirements.txt            # 项目依赖
-├── README.md                   # 项目说明
-└── main.py                     # 主程序入口
-
-## 评测命令（关键点文件统一命名）
-
-- 关键点文件统一使用：`outputs/evaluation_results/keypoint.json`
-- 若不传 `--keypoints`，评测会在输入文件同目录下自动查找 `keypoint.json`
-
-示例（对现有 `scoring.json` 回填召回率并覆盖写回）：
-
-```bash
-python outputs/evaluation_results/eval.py \
-  --input outputs/evaluation_results/scoring.json \
-  --output outputs/evaluation_results/scoring.json
-```
-
-示例（显式指定关键点文件）：
-
-```bash
-python outputs/evaluation_results/eval.py \
-  --input outputs/evaluation_results/scoring.json \
-  --output outputs/evaluation_results/scoring.json \
-  --keypoints outputs/evaluation_results/keypoint.json
-```
+└── outputs/                          # 运行输出
+    ├── evaluation_results/           # 当前评测输出（如 topk_8、keypoint.json、eval.py）
+    └── prev_evaluation_results/      # 历史评测备份
